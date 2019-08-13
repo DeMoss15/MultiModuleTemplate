@@ -1,5 +1,6 @@
 package com.demoss.core.base.mvvm.pagination
 
+import androidx.annotation.CallSuper
 import androidx.lifecycle.viewModelScope
 import com.demoss.core.base.mvvm.BaseAction
 import com.demoss.core.base.mvvm.BaseViewModel
@@ -11,7 +12,6 @@ abstract class BasePaginatorViewModel<ItemType, A : BaseAction, CE : BasePaginat
     // the lambda executes requests
     protected abstract val requestFabric: suspend (Int) -> List<ItemType>
 
-    @Suppress("UNCHECKED_CAST")
     protected val paginator: Paginator<ItemType> by lazy {
         Paginator(
             viewModelScope,
@@ -43,6 +43,7 @@ abstract class BasePaginatorViewModel<ItemType, A : BaseAction, CE : BasePaginat
     // makes extensions with custom actions available, but not required
     protected open fun executeNonPaginatorAction(action: A) {}
 
+    @CallSuper
     override fun onCleared() {
         paginator.release()
         super.onCleared()

@@ -13,14 +13,15 @@ import com.demoss.core.base.mvvm.BaseCommandExecutor
 import com.demoss.core.base.mvvm.BaseView
 import com.demoss.core.base.mvvm.BaseViewModel
 
-abstract class BaseFragment<A: BaseAction, CE: BaseCommandExecutor, VM : BaseViewModel<A, CE>>
+abstract class BaseFragment<A : BaseAction, CE : BaseCommandExecutor, VM : BaseViewModel<A, CE>>
     : Fragment(), BaseView<A, CE, VM> {
 
     abstract val layoutResourceId: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        subscribeToViewModel(this)
+        // TODO: think how to resolve this unchecked cast and force programmer to inherit his Fragments from it
+        subscribeToViewModel(this, this as CE)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
