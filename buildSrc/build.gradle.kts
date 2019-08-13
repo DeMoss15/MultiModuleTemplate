@@ -1,7 +1,8 @@
 import org.gradle.kotlin.dsl.`kotlin-dsl`
 
 plugins {
-    `kotlin-dsl` version "1.1.3"
+    // add version after kotlin-dsl if needed
+    `kotlin-dsl`
 }
 
 repositories {

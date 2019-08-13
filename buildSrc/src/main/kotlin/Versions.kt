@@ -3,7 +3,7 @@ object Versions {
     const val gradle = "3.4.2"
     const val gradleVersionsPlugin = "0.22.0"
 
-    const val kotlin = "1.3.41"
+    const val kotlin = "1.3.31"
 
     // DI
     const val dagger = "2.24"
